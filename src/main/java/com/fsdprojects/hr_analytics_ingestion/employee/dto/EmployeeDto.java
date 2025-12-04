@@ -27,6 +27,9 @@ public class EmployeeDto {
                             .map(e -> toEmployeeAttribute(e.getKey(), String.valueOf(e.getValue()), emp))
                             .toList()
             );
+            Object joined = attributes.get("joinedOn");
+            if (joined != null)
+                emp.setJoinedOn(Instant.parse(String.valueOf(joined)));
         }
 
         // convert salary
