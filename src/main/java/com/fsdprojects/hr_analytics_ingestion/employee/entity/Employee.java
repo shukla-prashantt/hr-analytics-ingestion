@@ -16,6 +16,10 @@ public class Employee {
 
     private boolean isDeleted;
 
+    //Ticket 2 -Changes to show DB Versioning
+    @Column(name = "joined_on")
+    private Instant joinedOn;
+
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SalaryValue> salaryValues = new ArrayList<>();
 
@@ -44,6 +48,14 @@ public class Employee {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public Instant getJoinedOn() {
+        return joinedOn;
+    }
+
+    public void setJoinedOn(Instant joinedOn) {
+        this.joinedOn = joinedOn;
     }
 
     public List<SalaryValue> getSalaryValues() {
